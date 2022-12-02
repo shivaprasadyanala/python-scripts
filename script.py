@@ -7,11 +7,9 @@ conn = mysql.connector.connect(user='root', password='root', host='127.0.0.1', d
 cur = conn.cursor()
 
 #create table dirs
-# CREATE TABLE Persons (
-#     Personid int NOT NULL AUTO_INCREMENT,
-#     LastName varchar(255) NOT NULL,
-#     FirstName varchar(255),
-#     Age int,
+# CREATE TABLE Dirs (
+#     Personid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+#     Dirs varchar(255) NOT NULL
 #     PRIMARY KEY (Personid)
 # );
 

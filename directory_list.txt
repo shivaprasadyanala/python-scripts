@@ -1,0 +1,10 @@
+list of directories in:D:/study files/pythonassesment
+carbon emission
+deploheroku
+flask
+house price pridiction boston
+House_Price_Prediction bangalore
+image processing pro
+machine learning
+python scripting
+__pycache__

@@ -1,17 +1,5 @@
 import os
-import mysql.connector
-
-#creating connection
-conn = mysql.connector.connect(user='root', password='root', host='127.0.0.1', database='pyscripts',port='3000')
-
-cur = conn.cursor()
-
-#create table dirs
-# CREATE TABLE Dirs (
-#     Personid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-#     Dirs varchar(255) NOT NULL
-#     PRIMARY KEY (Personid)
-# );
+from cassandra.cluster import Cluster
 
 path = 'D:/study files/python'
 dirs = os.listdir(path)
@@ -27,8 +15,10 @@ print(mydirs)
 # for d in mydirs:
 #      file.write(d+"\n")
 # file.close() #close file
-for d in mydirs:
-	print(d)
-	cur.execute("insert into dirs(dirs) values(%s)",(d,));
 
-conn.commit();
+cluster = Cluster(['cassandra'], port=9042)
+session = cluster.connect('store',wait_for_all_pools=False)
+session.execute('USE store')
+rows = session.execute('SELECT * FROM users')
+for row in rows:
+    print(row.userid,row.name,row.age)
